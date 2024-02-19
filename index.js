@@ -3,12 +3,15 @@ const express = require('express');
 const { connectDB } = require('./src/config/db');
 const consolesRoutes = require('./src/api/routes/console');
 const gamesRoutes = require('./src/api/routes/game');
+const usersRoutes = require('./src/api/routes/user');
 
 const app = express();
 
 connectDB();
 
 app.use(express.json());
+
+app.use('/api/v1/users', usersRoutes);
 
 app.use('/api/v1/consoles', consolesRoutes);
 app.use('/api/v1/games', gamesRoutes);
